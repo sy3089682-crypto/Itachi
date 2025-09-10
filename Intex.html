@@ -1,0 +1,54 @@
+
+<!doctype 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cube Solver — Step by Step</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- cubejs solver (CDN) -->
+  <script src="https://unpkg.com/cubejs@1.4.0/lib/cube.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <h1>Cube Solver — Step by Step</h1>
+    <div class="controls">
+      <div class="palette">
+        <label>Pick color (click a sticker to set):</label>
+        <div id="colorSwatches"></div>
+      </div>
+      <div class="actions">
+        <button id="solveBtn">Solve</button>
+        <button id="scrambleBtn">Random Scramble</button>
+        <button id="resetBtn">Reset (solved)</button>
+      </div>
+    </div>
+
+    <div class="board-and-solution">
+      <div id="cubeBoard" class="cube-board"></div>
+
+      <div class="solution-panel">
+        <h2>Solution</h2>
+        <div id="solutionMoves" class="moves"></div>
+
+        <div class="step-controls">
+          <button id="prevMove">Prev</button>
+          <button id="nextMove">Next</button>
+          <div id="currentMoveIdx">0 / 0</div>
+        </div>
+
+        <div class="note">
+          <strong>Note:</strong> Use the color picker and click stickers to set your cube. The solver expects faces ordered as:
+          <code>U R F D L B</code> (standard cubejs format).
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Built with <a href="https://www.npmjs.com/package/cubejs" target="_blank">cubejs</a> (CDN).
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
