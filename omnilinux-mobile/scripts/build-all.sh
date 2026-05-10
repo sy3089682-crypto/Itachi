@@ -1,4 +1,4 @@
-# OMNILINUX MOBILE - Complete Build Script
+#!/bin/bash
 # Phase 1-5 Full Implementation
 
 #!/bin/bash
