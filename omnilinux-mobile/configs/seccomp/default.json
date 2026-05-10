@@ -1,0 +1,53 @@
+{
+  "defaultAction": "SCMP_ACT_ALLOW",
+  "architectures": [
+    "SCMP_ARCH_AARCH64",
+    "SCMP_ARCH_ARM"
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "ptrace",
+        "process_vm_readv",
+        "process_vm_writev"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "errnoRet": 1
+    },
+    {
+      "names": [
+        "mount",
+        "umount2",
+        "pivot_root"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "errnoRet": 1
+    },
+    {
+      "names": [
+        "reboot",
+        "kexec_load",
+        "kexec_file_load"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "errnoRet": 1
+    },
+    {
+      "names": [
+        "sethostname",
+        "setdomainname"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "errnoRet": 1
+    },
+    {
+      "names": [
+        "init_module",
+        "finit_module",
+        "delete_module"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "errnoRet": 1
+    }
+  ]
+}
