@@ -1,6 +1,6 @@
 name: omnilinux_mobile
 description: Universal Linux Runtime for Smartphones - Native Android App
-version: 0.1.0
+version: 3.5.0+1
 publish_to: none
 
 environment:
@@ -37,6 +37,22 @@ dependencies:
   
   # Thermal monitoring (Android only)
   android_thermal: ^1.0.0
+  
+  # Archive extraction (rootfs)
+  archive: ^3.6.1
+  
+  # HTTP client (downloads)
+  http: ^1.2.1
+  
+  # Permissions
+  permission_handler: ^11.3.1
+  
+  # Preferences
+  shared_preferences: ^2.2.3
+  
+  # Utilities
+  collection: ^1.18.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -49,8 +65,10 @@ flutter:
   uses-material-design: true
   
   assets:
+    - assets/bin/
     - assets/rootfs/
     - assets/configs/
+    - assets/seccomp/
     
   fonts:
     - family: HackerMono
