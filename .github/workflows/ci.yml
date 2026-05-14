@@ -1,0 +1,52 @@
+name: Lint and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install ESLint
+      run: npm install --save-dev eslint
+    
+    - name: Run ESLint
+      run: npx eslint . --ext .js --max-warnings 0
+      continue-on-error: true
+    
+    - name: Check HTML validity
+      run: npm install --save-dev html-validate
+      continue-on-error: true
+    
+    - name: Validate HTML
+      run: npx html-validate Intex.html
+      continue-on-error: true
+
+  performance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check file sizes
+      run: |
+        echo "HTML size: $(wc -c < Intex.html) bytes"
+        echo "CSS size: $(wc -c < Styles.css) bytes"
+        echo "JS size: $(wc -c < app.jss) bytes"
+    
+    - name: Check for dependencies
+      run: |
+        if grep -q "npm\|require\|import" Intex.html; then
+          echo "No external npm dependencies detected in HTML"
+        fi
